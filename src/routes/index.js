@@ -1,4 +1,5 @@
 import express from "express";
+import authorsRoutes from "./authors-route.js";
 import booksRoutes from "./books-route.js"
 
 const index = (app) => {
@@ -8,6 +9,7 @@ const index = (app) => {
 
   app.use(
     express.json(),
+    authorsRoutes,
     booksRoutes
   )
 }
