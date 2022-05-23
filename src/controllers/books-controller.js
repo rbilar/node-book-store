@@ -11,6 +11,17 @@ class booksController {
       });
   };
 
+  static getByPublishingHouse = (req, res) => {
+    const publishingHouse = req.query.publishingHouse;
+
+    books
+      .find({ publishingHouse: publishingHouse })
+      .populate({ path: "author", select: "name" })
+      .exec((err, books) => {
+        res.status(200).json(books);
+      });
+  };
+
   static show = (req, res) => {
     const id = req.params.id;
 
